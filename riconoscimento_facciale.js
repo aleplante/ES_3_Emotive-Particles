@@ -6,6 +6,11 @@ let leftEye = []
 let rightEye = []
 let leftEyeBbrow = []
 let rightEyeBrow = []
+let HAPPY
+let SAD
+let ANGRY
+let NEUTRAL
+let SUPRISED
 
 // let webcamSize = {
 //     x:0,
@@ -126,7 +131,6 @@ async function init() {
 
 
             if (detections) {
-
                 //const data = faceapi.resizeResults(detections, displaySize) 
                 const data = faceapi.resizeResults(detections, { width: 1, height: 1 })
 
@@ -145,18 +149,23 @@ async function init() {
 
 
 
-                // -- INIZIALIZZA L'ESPRESSIONE ----------------------------------
+                // -- INIZIALIZZA L'ESPRESSIONE DEL VOLTO ----------------------------------
                 //  pre.innerHTML = JSON.stringify(expr, null, 4)
                 //https://stackoverflow.com/questions/35948669/how-to-check-if-a-value-exists-in-an-object-using-javascript#comment86065231_35948669
 
                 expr = getMaxValue(data.expressions)
+                HAPPY = Object.values(expr).includes("happy")
+                SAD = Object.values(expr).includes("sad")
+                ANGRY = Object.values(expr).includes("angry")
+                NEUTRAL = Object.values(expr).includes("neutral")
+                SUPRISED = Object.values(expr).includes("suprised")
                 //--------------------- HAPPY ---------------------------//
 
-                if (Object.values(expr).includes("happy")) {
-                    slider_Green.value = 255
+                if (HAPPY) {
                     slider_Red.value = 255
+                    slider_Green.value = 255
                     slider_Blue.value = 0
-                    slider_G.value = 200
+                    slider_Raggio.value = RaggioAuto // MAX 20 
                     //Behaviours
                     slider_G.value = 400 //  MAX 800
                     slider_Quant.value = 20 //  MAX 20
@@ -164,58 +173,58 @@ async function init() {
                     slider_Magnitude.value = 10   //  MAX 10
 
                     // console.log("felice" + "=" + felice)
-                    
-                } 
-                //--------------------- SAD ---------------------------//
-                else if (Object.values(expr).includes("sad")) {
-                    slider_Green.value = 160
-                    slider_Red.value = 160
-                    slider_Blue.value = BLUE
-                    slider_Raggio.value = 2 // MAX 10
+
+                }
+                //--------------------- NEUTRAL ---------------------------//
+                //crea funzione di automazione con setinterval per raggio value, con sin | https://javascript.info/settimeout-setinterval
+                else if (NEUTRAL) {
+                    //Colori e Dimensioni
+                    slider_Red.value = 100
+                    slider_Green.value = 255
+                    slider_Blue.value = 255
+                    slider_Raggio.value = 3 // MAX 20
                     //Behaviours
-                    slider_G.value = 50 //  MAX 800
+                    slider_G.value = 60 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
-                    slider_Life.value = 200 //  MAX 500
+                    slider_Life.value = 500 //  MAX 500
                     slider_Magnitude.value = 2   //  MAX 10
 
-                } 
+
+                }
+                //--------------------- SAD ---------------------------//
+                // else if (SAD) {
+                    //     slider_Red.value = 160
+                //     slider_Green.value = 160
+                //     slider_Blue.value = 255
+                //     slider_Raggio.value = RaggioAuto // MAX 20
+                //     //Behaviours
+                //     slider_G.value = 50 //  MAX 800
+                //     slider_Quant.value = 10 //  MAX 20
+                //     slider_Life.value = 200 //  MAX 500
+                //     slider_Magnitude.value = 2   //  MAX 10
+
+                // }
                 //--------------------- ANGRY ---------------------------//
-                else if (Object.values(expr).includes("angry")) {
-                    slider_Green.value = 0
+                else if (ANGRY) {
                     slider_Red.value = 255
+                    slider_Green.value = 0
                     slider_Blue.value = 0
-                    slider_Raggio.value = 2 // MAX 10
+                    slider_Raggio.value = RaggioAuto // MAX 20
                     //Behaviours
                     slider_G.value = -200 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
 
-                } 
-                //--------------------- NEUTRAL ---------------------------//
-                    //crea funzione di automazione con setinterval per raggio value, con sin | https://javascript.info/settimeout-setinterval
-                else if (Object.values(expr).includes("neutral")) {
-                    //Colori e Dimensioni
-                    slider_Green.value = 100
-                    slider_Red.value = RED
-                    slider_Blue.value = BLUE
-                    slider_Raggio.value = Math.floor(random(2,10)+sin(0)*1) // MAX 10
-                    console.log(slider_Raggio.value)
-                    //Behaviours
-                    slider_G.value = 20 //  MAX 800
-                    slider_Quant.value = 10 //  MAX 20
-                    slider_Life.value = 200 //  MAX 500
-                    slider_Magnitude.value = 4   //  MAX 10
+                }
 
 
-                } 
                 //--------------------- SURPRISED ---------------------------//
-                else if (Object.values(expr).includes("surprised")) {
-                    sorpreso = true
-                    slider_Green.value = 0
+                else if (SUPRISED) {
                     slider_Red.value = 255
+                    slider_Green.value = 0
                     slider_Blue.value = 255
-                    slider_G.value = 0
+                    slider_Raggio.value = RaggioAuto // MAX 20
                     //Behaviours
                     slider_G.value = -200 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
@@ -241,7 +250,20 @@ async function init() {
                 // pre.innerHTML = JSON.stringify(leftEye, null, 4)
 
             }
+            if (!detections) {
+                console.log("c'è nessunoooooo")
+                slider_Red.value = 255
+                slider_Green.value = 255
+                slider_Blue.value = 255
+                slider_Raggio.value = RaggioAuto // MAX 20
+                //Behaviours
+                slider_G.value = RaggioAuto //  MAX 800
+                slider_Quant.value = 3 //  MAX 20
+                slider_Life.value = 500 //  MAX 500
+                slider_Magnitude.value = 10   //  MAX 10
+            }
 
-        }, 100)
+        }, 200)
     }
+
 }

@@ -9,7 +9,7 @@ body {
 }
 
 .controlli {
-    display: none;
+    /* display: none; */
     overflow-y: auto;
     padding: 2%;
     background-color: rgb(136, 0, 255, 0.6);
@@ -24,7 +24,7 @@ body {
 }
 
 pre {
-    display: none;
+    /* display: none; */
     background-color: blueviolet;
     color: white;
 }

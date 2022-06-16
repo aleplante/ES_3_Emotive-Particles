@@ -24,7 +24,8 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight, WEBGL);
   for (let i = 0; i < 1; i++) {
-    attractors.push(createVector(random(-width * 0.3, width * 0.3), random(-height * 0.3, height * 0.3))) //qui al posto di random width e random height, inserisci i punti degli occhi
+    attractors.push(createVector(random(-width * 0.3, width * 0.3), 
+    random(-height * 0.3, height * 0.3))) //qui al posto di random width e random height, inserisci i punti degli occhi
   }
 }
 
@@ -48,6 +49,7 @@ function draw() {
   //   const vel = parseFloat(slider_Magnitude.value)
   //   particles.push(new Particle(x, y, r, life, vel));
   // }
+  
   for (let k = 0; k < slider_Quant.value; k++) {
     const y = random(-height * 0.2, height * 0.2)
     const x = -width / 2
@@ -109,7 +111,7 @@ function draw() {
 
   //---------------------------------------------------------------//
 
-//--------------------- DRAW ---------------------------//
+  //--------------------- DRAW ---------------------------//
 
 
   background('#000');
@@ -136,7 +138,7 @@ function draw() {
     circle(attr.x, attr.y, 5)
   }
 
-  //if PARTE DEL VOLTO esiste, usa attractor
+  // --------- if PARTE DEL VOLTO esiste, usa attractor --------- //
   if (nose.length > 0) {
     fill(255)
     const nx = map(nose[3]._x, 1, 0, -width / 2, width / 2)
@@ -144,6 +146,11 @@ function draw() {
     attractors[0].x = nx
     attractors[0].y = ny
   }
+  // ------------------------------------------------------------ //
+
+
+
+
 
 
   let out = ""
@@ -153,27 +160,43 @@ function draw() {
   out += "Red:" + " " + slider_Red.value + " "
   out += "Green:" + " " + slider_Green.value + " "
   out += "Blue:" + " " + slider_Blue.value + " "
+  
   counter.innerHTML = out
 }
 //-----------------------------------------------------------------//
 
 
-//--------------------- SLIDER AUTOMATION ---------------------------//
+//--------------------- SLIDER AUTOMATION - Colori ---------------------------//
 
-const speed = 40
+const speed = 300
 const max = 255
 let i = max;
 let RED = 0;
 let GREEN = 0;
 let BLUE = 0;
-setInterval(() => {
-  RED = Math.abs(i++ % (max * 2) - max)
-  GREEN = Math.abs(i++ % (max * 2) - max)
-  BLUE = Math.abs(i++ % (max * 2) - max)
-  // console.log(GREEN)
-}, speed)
 
+
+setInterval(() => {
+    RED = Math.abs(i++ % (max * 2) - max)
+    GREEN = Math.abs(i++ % (max * 2) - max)
+    BLUE = Math.abs(i++ % (max * 2) - max)
+    // console.log(GREEN)
+}, speed)
 //-----------------------------------------------------------------//
+//--------------------- SLIDER AUTOMATION - Raggio ---------------------------//
+const speedR = 50
+const maxR = 10
+let iR = maxR;
+let RaggioAuto
+
+setInterval(() => {
+    RaggioAuto = Math.abs(iR++ % (maxR * 2) - (maxR - 1))
+    // console.log(RaggioAuto)
+}, speedR)
+
+//-------------------------------------------------------------------//
+
+
 
 //-------------------- AUDIO INTRO -------------------------------//
 

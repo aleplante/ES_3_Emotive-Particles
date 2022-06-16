@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    overflow: hidden;
+}
+
+.controlli {
+    display: none;
+    overflow-y: auto;
+    padding: 2%;
+    background-color: rgb(136, 0, 255, 0.6);
+    position: fixed;
+    width: 300px;
+    height: 80vh;
+    right: 0;
+    color: aliceblue;
+
+
+
+}
+
+pre {
+    display: none;
+    background-color: blueviolet;
+    color: white;
+}
+
+input[type=range] {
+    background-color: inherit;
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+    margin-bottom: 5%;
+}
+
+input[type=range]::-moz-range-track {
+    background-color: white;
+}
+
+.hide {
+    display: none;
+}
+
+.preload {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(2, 2, 2, 0.98);
+    z-index: 1;
+    animation: Animation_Preload 2s ease 8s;
+    transition: opacity 0.5 all ease;
+}
+
+.preload-finish {
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+h2 {
+    font-weight: 200;
+    font-size: 4vh;
+    color: white;
+}
+
+.c1 {
+    position: absolute;
+    top: 35vh;
+    left: 5%;
+}
+
+.c2 {
+    position: absolute;
+    top: 42vh;
+    left: 5%;
+}
+
+.typed-out-1 {
+    animation-delay: 1s!important;
+    opacity:0;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    animation:
+        typing1 2s steps(30, end) forwards,
+        blink .8s infinite;
+    top: 15%;
+    left: 5%;
+}
+
+.typed-out-2 {
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    width: 0;
+    animation:
+        typing2 2s steps(20, end) forwards,
+        blink .9s infinite;
+    animation-delay: 4.2s;
+    top: 25%;
+    left: 5%;
+}
+
+@keyframes Animation_Preload {
+    from {
+        filter: blur(0px);
+        opacity: 100%;
+    }
+    
+    to {
+        filter: blur(10px);
+        opacity: 0;
+    }
+    
+}
+@keyframes typing1 {
+    0% {
+        opacity: 0;
+        border-right: 0.3em solid orange;
+        border-radius: 0;
+        width: 0;
+    }
+
+    95% {
+        opacity: 100;
+        border-right: 0.3em solid orange;
+        width: 100%;
+    }
+    100% {
+        opacity: 100;
+        border-right: 0em solid orange;
+        width: 100%;
+    }
+}
+@keyframes typing2 {
+    0% {
+        opacity: 0;
+        border-right: 0em solid orange;
+        border-radius: 0;
+        width: 0;
+    }
+
+    100% {
+        opacity: 100;
+        border-right: 0.3em solid orange;
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    
+    to {
+        border-color: orange;
+    }
+}
+
+@keyframes disappear {
+    from {
+        border-right: 1em;
+    }
+
+    to {
+        border-right: 0em;
+
+    }
+}

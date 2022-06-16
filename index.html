@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/Assets/Favicon2.png">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 style="color: white; position: absolute; top:10%; left: 30%">
+        rimuovi display:none da controlli e pre!
+    </h3>
+    <div class="preload">
+        <div class="c1">
+            <!-- smile if you are ready -->
+            <h2 class="typed-out-1">
+                We might be the master of our own thoughts,
+            </h2>
+        </div>
+        <div class="c2">
+            <!-- smile if you are ready -->
+            <h2 class="typed-out-2">
+                still we are the slaves of our own emotions.
+            </h2>
+        </div>
+    </div>
+
+    <video autoplay="true" class="hide"></video>
+    <canvas class="hide"></canvas>
+    <pre></pre>
+
+
+    <div class="controlli">
+        <label for="slider_G">Forza G</label>
+        <input id="slider_G" type="range" min="-400" max="800" value="100" step="0.01">
+
+        <label for="slider_Raggio">
+            <h3>Raggio</h3>
+        </label>
+        <input id="slider_Raggio" type="range" min="1" max="10" value="3" step="0.01">
+        <label for="">
+            <h3>Life</h3>
+        </label>
+        <input id="slider_Life" type="range" min="1" max="500" value="255" step="0.01">
+
+        <label for="">
+            <h3>Quantity</h3>
+        </label>
+        <input id="slider_Quant" type="range" min="1" max="20" value="4" step="1">
+        <label for="">
+            <h3>Magnitude</h3>
+        </label>
+        <input id="slider_Magnitude" type="range" min="0" max="10" value="5" step="0.1">
+        <label for="">
+            <h3>Red</h3>
+        </label>
+        <input id="slider_Red" type="range" min="0" max="255" value="220" step="0.1">
+        <label for="">
+            <h3>Green</h3>
+        </label>
+        <input id="slider_Green" type="range" min="0" max="255" value="220" step="0.1">
+        <label for="">
+            <h3>Blue</h3>
+        </label>
+        <input id="slider_Blue" type="range" min="0" max="255" value="20" step="0.1">
+    </div>
+
+    <pre id="counter"></pre>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="lib/face-api/face-api.min.js"></script>
+    <script src="riconoscimento_facciale.js"></script>
+    <script src="particle.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

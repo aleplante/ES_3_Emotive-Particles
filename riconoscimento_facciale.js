@@ -230,6 +230,7 @@ async function init() {
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
+                    
                 }
 
                 // -- età e sesso ----------------------------------

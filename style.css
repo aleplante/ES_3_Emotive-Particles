@@ -22,7 +22,29 @@ body {
 
 
 }
+svg {
+    position: fixed;
+    top: 4vh;
+    right: 4vh;
+    background-color: transparent;
+    width: 1.4vw;
+    z-index: 99999;
+}
+nav {
+    display: block;
+    color: white;
+    list-style: none;
+    position: fixed;
+    left:1vw;
+    top:2vh;
+}
 
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+}
 pre {
     /* display: none; */
     background-color: blueviolet;

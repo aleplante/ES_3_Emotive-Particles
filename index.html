@@ -11,18 +11,36 @@
 </head>
 
 <body>
-    <h3 style="color: white; position: absolute; top:10%; left: 30%">
+    <!-- <h3 style="color: white; position: absolute; top:10%; left: 30%">
         rimuovi display:none da controlli e pre!
-    </h3>
+    </h3> -->
+    <a id="togglefullscreen" alt="Go Full Screen"> 
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+         <g>
+             <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
+                 <path fill="white"
+                     d="M6472.3,4526.9v-483.1h878.8h881.1L6971.5,2783.1L5713.1,1524.8l349.7-352l352-349.7l1258.4,1258.4l1260.7,1260.6v-881.1v-878.8h483.1H9900v1713.9V5010H8186.2H6472.3V4526.9z" />
+                 <path fill="white"
+                     d="M2324.6-1863.8L1066.2-3122.2v881.1v878.8H583.1H100v-1713.8V-4790h1713.8h1713.9v483.1v483.1h-878.8h-881.1L3017-2574.6c685.5,685.5,1246.9,1258.4,1246.9,1269.9c0,13.8-151.8,177.1-340.5,363.5l-338.2,338.2L2324.6-1863.8z" />
+             </g>
+         </g>
+     </svg>
+    </a>
+	<nav>
+        <li>
+            <a href="./">Index</a>
+        </li>
+    </nav>
     <div class="preload">
         <div class="c1">
-            <!-- smile if you are ready -->
+
             <h2 class="typed-out-1">
                 We might be the master of our own thoughts,
             </h2>
         </div>
         <div class="c2">
-            <!-- smile if you are ready -->
+
             <h2 class="typed-out-2">
                 still we are the slaves of our own emotions.
             </h2>
@@ -31,10 +49,10 @@
 
     <video autoplay="true" class="hide"></video>
     <canvas class="hide"></canvas>
-    <pre></pre>
+    <pre class="hide""></pre>
 
 
-    <div class="controlli">
+    <div class="controlli hide">
         <label for="slider_G">Forza G</label>
         <input id="slider_G" type="range" min="-400" max="800" value="100" step="0.01">
 
@@ -69,7 +87,7 @@
         <input id="slider_Blue" type="range" min="0" max="255" value="20" step="0.1">
     </div>
 
-    <pre id="counter"></pre>
+    <pre id="counter" class="hide"></pre>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>

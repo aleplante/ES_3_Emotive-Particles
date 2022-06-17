@@ -24,8 +24,8 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight, WEBGL);
   for (let i = 0; i < 1; i++) {
-    attractors.push(createVector(random(-width * 0.3, width * 0.3), 
-    random(-height * 0.3, height * 0.3))) //qui al posto di random width e random height, inserisci i punti degli occhi
+    attractors.push(createVector(random(-width * 0.3, width * 0.3),
+      random(-height * 0.3, height * 0.3))) //qui al posto di random width e random height, inserisci i punti degli occhi
   }
 }
 
@@ -49,7 +49,7 @@ function draw() {
   //   const vel = parseFloat(slider_Magnitude.value)
   //   particles.push(new Particle(x, y, r, life, vel));
   // }
-  
+
   for (let k = 0; k < slider_Quant.value; k++) {
     const y = random(-height * 0.2, height * 0.2)
     const x = -width / 2
@@ -139,12 +139,15 @@ function draw() {
   }
 
   // --------- if PARTE DEL VOLTO esiste, usa attractor --------- //
+
+
   if (nose.length > 0) {
     fill(255)
     const nx = map(nose[3]._x, 1, 0, -width / 2, width / 2)
     const ny = map(nose[3]._y, 0, 1, -height / 2, height / 2)
     attractors[0].x = nx
     attractors[0].y = ny
+
   }
   // ------------------------------------------------------------ //
 
@@ -160,7 +163,7 @@ function draw() {
   out += "Red:" + " " + slider_Red.value + " "
   out += "Green:" + " " + slider_Green.value + " "
   out += "Blue:" + " " + slider_Blue.value + " "
-  
+
   counter.innerHTML = out
 }
 //-----------------------------------------------------------------//
@@ -177,26 +180,24 @@ let BLUE = 0;
 
 
 setInterval(() => {
-    RED = Math.abs(i++ % (max * 2) - max)
-    GREEN = Math.abs(i++ % (max * 2) - max)
-    BLUE = Math.abs(i++ % (max * 2) - max)
-    // console.log(GREEN)
+  RED = Math.abs(i++ % (max * 2) - max)
+  GREEN = Math.abs(i++ % (max * 2) - max)
+  BLUE = Math.abs(i++ % (max * 2) - max)
+  // console.log(GREEN)
 }, speed)
 //-----------------------------------------------------------------//
 //--------------------- SLIDER AUTOMATION - Raggio ---------------------------//
-const speedR = 50
-const maxR = 10
+const speedR = 100
+const maxR = 8
 let iR = maxR;
 let RaggioAuto
 
 setInterval(() => {
-    RaggioAuto = Math.abs(iR++ % (maxR * 2) - (maxR - 1))
-    // console.log(RaggioAuto)
+  RaggioAuto = Math.abs(iR++ % (maxR * 2) - (maxR - 1))
+  // console.log("raggio è = a " + " " + RaggioAuto + " " + "ogni" + " " + speedR + " " + "secondi")
 }, speedR)
 
 //-------------------------------------------------------------------//
-
-
 
 //-------------------- AUDIO INTRO -------------------------------//
 
@@ -233,3 +234,34 @@ setTimeout(() => {
 
 //-----------------------------------------------------------------//
 
+//-------------------------------------------------------- GOFULLSCREEN----------------------------//
+function toggleFullscreen(elem) {
+  elem = elem || document.documentElement;
+
+  if (!document.fullscreenElement && !document.mozFullScreenElement &&
+    !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+
+document.getElementById('togglefullscreen').addEventListener('click', function() {
+  toggleFullscreen();
+});

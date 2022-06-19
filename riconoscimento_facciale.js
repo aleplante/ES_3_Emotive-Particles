@@ -253,15 +253,17 @@ async function init() {
             }
             if (!detections) {
                 console.log("c'è nessunoooooo")
+                attractors.x = -603//posiziona negativo
+                attractors.y = 14
                 slider_Red.value = 255
                 slider_Green.value = 255
                 slider_Blue.value = 255
                 slider_Raggio.value = RaggioAuto // MAX 20
                 //Behaviours
-                slider_G.value = RaggioAuto //  MAX 800
-                slider_Quant.value = 3 //  MAX 20
-                slider_Life.value = 500 //  MAX 500
-                slider_Magnitude.value = 10   //  MAX 10
+                slider_G.value = 300 //  MAX 800
+                slider_Quant.value = 20 //  MAX 20
+                slider_Life.value = 100 //  MAX 500
+                slider_Magnitude.value = 2   //  MAX 10
             }
 
         }, 200)

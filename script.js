@@ -188,7 +188,7 @@ setInterval(() => {
 //-----------------------------------------------------------------//
 //--------------------- SLIDER AUTOMATION - Raggio ---------------------------//
 const speedR = 100
-const maxR = 8
+const maxR = 3
 let iR = maxR;
 let RaggioAuto
 
@@ -207,7 +207,7 @@ audio1.play()
 audio1.onended = FadeIn();
 
 function FadeIn() {
-  const audio2 = new Audio('/Swept/Swept128kbps.mp3')
+  const audio2 = new Audio('/Swept/Swept128kbps.m4a')
   let vol = 0
   let interval = 300
   audio2.play()
@@ -265,3 +265,7 @@ function toggleFullscreen(elem) {
 document.getElementById('togglefullscreen').addEventListener('click', function() {
   toggleFullscreen();
 });
+
+function windowResized(){
+  resizeCanvas(windowWidth,windowHeight)
+}

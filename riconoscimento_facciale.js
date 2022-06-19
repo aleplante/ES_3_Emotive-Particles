@@ -10,7 +10,7 @@ let HAPPY
 let SAD
 let ANGRY
 let NEUTRAL
-let SUPRISED
+let SURPRISED
 
 // let webcamSize = {
 //     x:0,
@@ -158,7 +158,7 @@ async function init() {
                 SAD = Object.values(expr).includes("sad")
                 ANGRY = Object.values(expr).includes("angry")
                 NEUTRAL = Object.values(expr).includes("neutral")
-                SUPRISED = Object.values(expr).includes("suprised")
+                SURPRISED = Object.values(expr).includes("surprised")
                 //--------------------- HAPPY ---------------------------//
 
                 if (HAPPY) {
@@ -167,10 +167,11 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20 
                     //Behaviours
-                    slider_G.value = 400 //  MAX 800
-                    slider_Quant.value = 20 //  MAX 20
-                    slider_Life.value = 250 //  MAX 500
-                    slider_Magnitude.value = 10   //  MAX 10
+                    slider_G.value = 100 //  MAX 800
+                    slider_Quant.value = 10 //  MAX 20
+                    slider_Life.value = 120 //  MAX 500
+                    slider_Magnitude.value = 4   //  MAX 10
+                    console.log("felice")
 
                     // console.log("felice" + "=" + felice)
 
@@ -184,24 +185,26 @@ async function init() {
                     slider_Blue.value = 255
                     slider_Raggio.value = 3 // MAX 20
                     //Behaviours
-                    slider_G.value = 60 //  MAX 800
-                    slider_Quant.value = 10 //  MAX 20
+                    slider_G.value = 10 //  MAX 800
+                    slider_Quant.value = 2 //  MAX 20
                     slider_Life.value = 500 //  MAX 500
-                    slider_Magnitude.value = 2   //  MAX 10
+                    slider_Magnitude.value = 1   //  MAX 10
+                    console.log("neutrale")
 
 
                 }
                 //--------------------- SAD ---------------------------//
                 // else if (SAD) {
-                    //     slider_Red.value = 160
-                //     slider_Green.value = 160
+                //     slider_Red.value = 160
+                //     slider_Green.value = 50
                 //     slider_Blue.value = 255
                 //     slider_Raggio.value = RaggioAuto // MAX 20
                 //     //Behaviours
-                //     slider_G.value = 50 //  MAX 800
-                //     slider_Quant.value = 10 //  MAX 20
-                //     slider_Life.value = 200 //  MAX 500
+                //     slider_G.value = 2 //  MAX 800
+                //     slider_Quant.value = 2 //  MAX 20
+                //     slider_Life.value = 350 //  MAX 500
                 //     slider_Magnitude.value = 2   //  MAX 10
+                //     console.log("triste")
 
                 // }
                 //--------------------- ANGRY ---------------------------//
@@ -211,26 +214,29 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20
                     //Behaviours
-                    slider_G.value = -200 //  MAX 800
+                    slider_G.value = -100 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
-
+                    console.log("arrabbiato")
+                    
+                    
                 }
-
-
+                
+                
                 //--------------------- SURPRISED ---------------------------//
-                else if (SUPRISED) {
-                    slider_Red.value = 255
-                    slider_Green.value = 0
-                    slider_Blue.value = 255
+                else if (SURPRISED) {
+                    slider_Red.value = 25
+                    slider_Green.value = 255
+                    slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20
                     //Behaviours
-                    slider_G.value = -200 //  MAX 800
+                    slider_G.value = 800 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
-                    
+                    console.log("sorpresa")
+
                 }
 
                 // -- età e sesso ----------------------------------
@@ -254,7 +260,7 @@ async function init() {
             if (!detections) {
                 console.log("c'è nessunoooooo")
                 attractors.x = -603//posiziona negativo
-                attractors.y = 14
+                attractors.y = 0
                 slider_Red.value = 255
                 slider_Green.value = 255
                 slider_Blue.value = 255

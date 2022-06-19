@@ -1,10 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@media screen and (max-width: 630px) {
+    html {
+        font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+        text-align: center;
+    }
+
+    .title {
+        font-size: 12px;
+        margin-right: 5%;
+    }
+
+    .fullscreenSVG {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 631px) {
+    html {
+        font-size: 22px;
+    }
+    
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    font-size: 10pt;
+    font-size: 16px;
     overflow: hidden;
 }
 
@@ -22,29 +45,54 @@ body {
 
 
 }
+
 svg {
-    position: fixed;
-    top: 4vh;
-    right: 4vh;
     background-color: transparent;
-    width: 1.4vw;
+    width: calc(8px + 6 * ((100vw - 320px) / 680));
     z-index: 99999;
 }
-nav {
-    display: block;
+
+.menu {
+    width: 100%;
+    height: 5vh;
     color: white;
-    list-style: none;
     position: fixed;
-    left:1vw;
-    top:2vh;
+    top: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.index {
+    order: 1;
+    margin-left: 2vw;
 
-a {
+}
+
+.index a {
     text-decoration: none;
     color: white;
     font-weight: 200;
 }
+
+.title {
+    order: 2;
+
+}
+
+.title p {
+    color: white;
+    font-weight: 400;
+}
+
+.fullscreenSVG {
+    cursor: pointer;
+    margin-right: 2vw;
+    order: 3;
+
+}
+
 pre {
     /* display: none; */
     background-color: blueviolet;
@@ -103,8 +151,8 @@ h2 {
 }
 
 .typed-out-1 {
-    animation-delay: 1s!important;
-    opacity:0;
+    animation-delay: 1s !important;
+    opacity: 0;
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
@@ -153,12 +201,14 @@ h2 {
         border-right: 0.3em solid orange;
         width: 100%;
     }
+
     100% {
         opacity: 100;
         border-right: 0em solid orange;
         width: 100%;
     }
 }
+
 @keyframes typing2 {
     0% {
         opacity: 0;
@@ -178,7 +228,7 @@ h2 {
     from {
         border-color: transparent;
     }
-    
+
     to {
         border-color: orange;
     }

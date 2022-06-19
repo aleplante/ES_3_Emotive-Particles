@@ -18,6 +18,7 @@ const slider_Green = document.querySelector("#slider_Green")
 const slider_Blue = document.querySelector("#slider_Blue")
 
 
+
 init()
 
 function setup() {
@@ -49,15 +50,16 @@ function draw() {
   //   const vel = parseFloat(slider_Magnitude.value)
   //   particles.push(new Particle(x, y, r, life, vel));
   // }
-
+//SX
   for (let k = 0; k < slider_Quant.value; k++) {
-    const y = random(-height * 0.2, height * 0.2)
-    const x = -width / 2
+    const y = random(-height*0.3, height*0.3)
+    const x = -width /2
     const vel = parseFloat(slider_Magnitude.value)
     particles.push(new Particle(x, y, r, life, vel));
   }
+  //DX
   for (let l = 0; l < slider_Quant.value; l++) {
-    const y = random(-height * 0.2, height * 0.2)
+    const y = random(-height*0.3, height*0.3)
     const x = width / 2
     const vel = parseFloat(slider_Magnitude.value) * -1
     particles.push(new Particle(x, y, r, life, vel));
@@ -68,9 +70,11 @@ function draw() {
 
 
   //Per ogni particella
+
+
   for (const particle of particles) {
-    const gravity = createVector(0.1, 0);
-    // particle.applyForce(gravity);
+    const gravity = createVector(0,0)
+    particle.applyForce(gravity);
     for (let i = 0; i < attractors.length; i++) {
       particle.attracted(attractors[i], slider_G.value);
     }
@@ -140,14 +144,13 @@ function draw() {
 
   // --------- if PARTE DEL VOLTO esiste, usa attractor --------- //
 
-
   if (nose.length > 0) {
     fill(255)
-    const nx = map(nose[3]._x, 1, 0, -width / 2, width / 2)
-    const ny = map(nose[3]._y, 0, 1, -height / 2, height / 2)
+    const nx = (map(nose[3]._x, 1, 0, -width / 2, width / 2))
+    const ny = (map(nose[3]._y, 0, 1, -height / 2, height / 2))
     attractors[0].x = nx
-    attractors[0].y = ny
-
+    attractors[0].y = ny 
+ 
   }
   // ------------------------------------------------------------ //
 
@@ -156,15 +159,15 @@ function draw() {
 
 
 
-  let out = ""
-  out += "Forza G: " + slider_G.value + " " + "|" + " "
-  out += "FPS: " + Math.round(frameRate()) + " " + "|" + " "
-  out += "ParticlesQuantity:" + " " + particles.length + " " + "\n"
-  out += "Red:" + " " + slider_Red.value + " "
-  out += "Green:" + " " + slider_Green.value + " "
-  out += "Blue:" + " " + slider_Blue.value + " "
+  // let out = ""
+  // out += "Forza G: " + slider_G.value + " " + "|" + " "
+  // out += "FPS: " + Math.round(frameRate()) + " " + "|" + " "
+  // out += "ParticlesQuantity:" + " " + particles.length + " " + "\n"
+  // out += "Red:" + " " + slider_Red.value + " "
+  // out += "Green:" + " " + slider_Green.value + " "
+  // out += "Blue:" + " " + slider_Blue.value + " "
 
-  counter.innerHTML = out
+  // counter.innerHTML = out
 }
 //-----------------------------------------------------------------//
 
@@ -187,17 +190,18 @@ setInterval(() => {
 }, speed)
 //-----------------------------------------------------------------//
 //--------------------- SLIDER AUTOMATION - Raggio ---------------------------//
-const speedR = 100
+const speedR = 50
 const maxR = 3
 let iR = maxR;
 let RaggioAuto
 
 setInterval(() => {
   RaggioAuto = Math.abs(iR++ % (maxR * 2) - (maxR - 1))
-  // console.log("raggio è = a " + " " + RaggioAuto + " " + "ogni" + " " + speedR + " " + "secondi")
+   console.log("raggio è = a " + " " + RaggioAuto + " " + "ogni" + " " + speedR + " " + "millisecondi")
 }, speedR)
 
 //-------------------------------------------------------------------//
+
 
 //-------------------- AUDIO INTRO -------------------------------//
 

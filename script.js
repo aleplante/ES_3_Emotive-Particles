@@ -207,7 +207,7 @@ audio1.play()
 audio1.onended = FadeIn();
 
 function FadeIn() {
-  const audio2 = new Audio('/Swept/Swept128kbps.mp3')
+  const audio2 = new Audio('Swept128kbps.mp3')
   let vol = 0
   let interval = 300
   audio2.play()

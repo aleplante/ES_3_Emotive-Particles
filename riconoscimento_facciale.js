@@ -106,6 +106,7 @@ async function init() {
 
         canvas.width = webcam.width
         canvas.height = webcam.height
+        let noOneRefresh = -1
 
         setInterval(async function () {
 
@@ -128,9 +129,8 @@ async function init() {
             // const detections = await faceapi.detectSingleFace(webcam).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptor()
 
             // const detections = await faceapi.detectSingleFace(webcam)
-
-
             if (detections) {
+
                 //const data = faceapi.resizeResults(detections, displaySize) 
                 const data = faceapi.resizeResults(detections, { width: 1, height: 1 })
 
@@ -167,29 +167,33 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20 
                     //Behaviours
-                    slider_G.value = 100 //  MAX 800
+                    slider_G.value = 150 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 120 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
-                    console.log("felice")
-
-                    // console.log("felice" + "=" + felice)
+                    // console.log("felice")
+                    for (const particle of particles) {
+                        const gravity = createVector(0, 1.5)
+                        particle.applyForce(gravity);
+                        particle.update();
+                    
+                      }
 
                 }
                 //--------------------- NEUTRAL ---------------------------//
                 //crea funzione di automazione con setinterval per raggio value, con sin | https://javascript.info/settimeout-setinterval
                 else if (NEUTRAL) {
                     //Colori e Dimensioni
-                    slider_Red.value = 100
-                    slider_Green.value = 255
+                    slider_Red.value = 0
+                    slider_Green.value = GREEN
                     slider_Blue.value = 255
                     slider_Raggio.value = 3 // MAX 20
                     //Behaviours
-                    slider_G.value = 10 //  MAX 800
-                    slider_Quant.value = 2 //  MAX 20
-                    slider_Life.value = 500 //  MAX 500
-                    slider_Magnitude.value = 1   //  MAX 10
-                    console.log("neutrale")
+                    slider_G.value = 80 //  MAX 800
+                    slider_Quant.value = 6 //  MAX 20
+                    slider_Life.value = 200 //  MAX 500
+                    slider_Magnitude.value = 3   //  MAX 10
+                    // console.log("neutrale")
 
 
                 }
@@ -204,7 +208,12 @@ async function init() {
                 //     slider_Quant.value = 2 //  MAX 20
                 //     slider_Life.value = 350 //  MAX 500
                 //     slider_Magnitude.value = 2   //  MAX 10
-                //     console.log("triste")
+                //     // console.log("triste")
+                //     for (const particle of particles) {
+                //         const gravity = createVector(1, 10)
+                //         particle.applyForce(gravity);
+                //         particle.update();
+                //       }
 
                 // }
                 //--------------------- ANGRY ---------------------------//
@@ -212,18 +221,18 @@ async function init() {
                     slider_Red.value = 255
                     slider_Green.value = 0
                     slider_Blue.value = 0
-                    slider_Raggio.value = RaggioAuto // MAX 20
+                    slider_Raggio.value = 4  // MAX 20
                     //Behaviours
                     slider_G.value = -100 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
-                    slider_Magnitude.value = 4   //  MAX 10
-                    console.log("arrabbiato")
-                    
-                    
+                    slider_Magnitude.value = 3  //  MAX 10
+                    // console.log("arrabbiato")
+
+
                 }
-                
-                
+
+
                 //--------------------- SURPRISED ---------------------------//
                 else if (SURPRISED) {
                     slider_Red.value = 25
@@ -231,12 +240,13 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20
                     //Behaviours
-                    slider_G.value = 800 //  MAX 800
-                    slider_Quant.value = 10 //  MAX 20
+                    slider_G.value = 400 //  MAX 800
+                    slider_Quant.value = 7 //  MAX 20
                     slider_Life.value = 200 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
-                    console.log("sorpresa")
+                    // console.log("sorpresa")
 
+                
                 }
 
                 // -- età e sesso ----------------------------------
@@ -255,10 +265,11 @@ async function init() {
 
                 // pre.innerHTML = JSON.stringify(nose, null, 4)
                 // pre.innerHTML = JSON.stringify(leftEye, null, 4)
-
+                clearTimeout(noOneRefresh)
+                noOneRefresh = -1
             }
             if (!detections) {
-                console.log("c'è nessunoooooo")
+                console.log("No Face Detected")
                 attractors.x = -603//posiziona negativo
                 attractors.y = 0
                 slider_Red.value = 255
@@ -268,11 +279,31 @@ async function init() {
                 //Behaviours
                 slider_G.value = 300 //  MAX 800
                 slider_Quant.value = 20 //  MAX 20
-                slider_Life.value = 100 //  MAX 500
+                slider_Life.value = 500 //  MAX 500
                 slider_Magnitude.value = 2   //  MAX 10
+                if (noOneRefresh == -1) {
+                    noOneRefresh = setTimeout(goodbye, 15000)
+                }
+                let GRdirection = 0
+                if(attractors[0].x<0){
+                    GRdirection = 3
+                } else if (attractors[0].x>0){
+                    GRdirection = -3
+                }
+                for (const particle of particles) {
+                    const gravity = createVector(GRdirection, 0)
+                    console.log(GRdirection)
+                    particle.applyForce(gravity);
+                    particle.update();
+                    
+                }
+                
             }
 
         }, 200)
+
+
+
     }
 
 }

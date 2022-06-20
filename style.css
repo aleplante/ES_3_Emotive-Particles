@@ -83,7 +83,7 @@ svg {
 
 .title p {
     color: white;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 .fullscreenSVG {
@@ -185,7 +185,7 @@ h2 {
     to {
         filter: blur(10px);
         opacity: 0;
-    }
+    } 
     
 }
 @keyframes typing1 {

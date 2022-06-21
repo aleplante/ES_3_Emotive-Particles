@@ -167,7 +167,7 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20 
                     //Behaviours
-                    slider_G.value = 150 //  MAX 800
+                    slider_G.value = 300 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 120 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10

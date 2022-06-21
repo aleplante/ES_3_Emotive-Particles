@@ -300,7 +300,7 @@ async function init() {
                 
             }
 
-        }, 200)
+        }, 100)
 
 
 

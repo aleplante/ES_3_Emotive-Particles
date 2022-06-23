@@ -167,13 +167,13 @@ async function init() {
                     slider_Blue.value = 0
                     slider_Raggio.value = RaggioAuto // MAX 20 
                     //Behaviours
-                    slider_G.value = 300 //  MAX 800
+                    slider_G.value = 200 //  MAX 800
                     slider_Quant.value = 10 //  MAX 20
                     slider_Life.value = 120 //  MAX 500
                     slider_Magnitude.value = 4   //  MAX 10
                     // console.log("felice")
                     for (const particle of particles) {
-                        const gravity = createVector(0, 1.5)
+                        const gravity = createVector(0, 0.5)
                         particle.applyForce(gravity);
                         particle.update();
                     
@@ -270,29 +270,32 @@ async function init() {
             }
             if (!detections) {
                 console.log("No Face Detected")
-                attractors.x = -603//posiziona negativo
-                attractors.y = 0
                 slider_Red.value = 255
                 slider_Green.value = 255
                 slider_Blue.value = 255
                 slider_Raggio.value = RaggioAuto // MAX 20
                 //Behaviours
-                slider_G.value = 300 //  MAX 800
+                slider_G.value = 100 //  MAX 800
                 slider_Quant.value = 20 //  MAX 20
-                slider_Life.value = 500 //  MAX 500
-                slider_Magnitude.value = 2   //  MAX 10
+                slider_Life.value = 300 //  MAX 500
+                slider_Magnitude.value = 3   //  MAX 10
                 if (noOneRefresh == -1) {
                     noOneRefresh = setTimeout(goodbye, 15000)
                 }
-                let GRdirection = 0
-                if(attractors[0].x<0){
-                    GRdirection = 3
-                } else if (attractors[0].x>0){
-                    GRdirection = -3
-                }
+                let GRdirectionX = 0
+                let GRdirectionY = 0
+
+                if(attractors[0].x<-200){
+                    GRdirectionX = -2
+                } else if (attractors[0].x>200){
+                    GRdirectionX = 2
+                }else{
+                    GRdirectionX = -0.1
+                    GRdirectionY = 0.1
+                } 
+                console.log(GRdirectionX)
                 for (const particle of particles) {
-                    const gravity = createVector(GRdirection, 0)
-                    console.log(GRdirection)
+                    const gravity = createVector(GRdirectionX, GRdirectionY)
                     particle.applyForce(gravity);
                     particle.update();
                     

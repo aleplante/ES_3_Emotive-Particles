@@ -26,7 +26,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   for (let i = 0; i < 1; i++) {
     attractors.push(createVector(random(-width * 0.3, width * 0.3),
-      random(-height * 0.3, height * 0.3))) //qui al posto di random width e random height, inserisci i punti degli occhi
+    random(-height * 0.3, height * 0.3))) 
   }
 }
 
@@ -131,8 +131,8 @@ function draw() {
   beginShape(POINTS)
   for (const particle of particles) {
     vertex(particle.pos.x, particle.pos.y)
-    //fill(R,G,B,particle.lifetime)
-    //particle.show();
+    // fill(R,G,B,particle.lifetime)
+    // particle.show();
   }
   endShape()
 
